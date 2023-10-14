@@ -56,7 +56,7 @@ int _isspace(char c);
 
 int is_empty(const char *str);
 
-int _atoi_(const char *str);
+int _atoi_(char *str);
 
 /* write  */
 
