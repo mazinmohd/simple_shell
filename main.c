@@ -1,14 +1,15 @@
 #include "main.h"
 /**
  * main - entry point
- * 
+ * @ac: counts arg number
+ * @argv: array of string
  * Return: 0 in success and -1 in fail
  */
-int main(void)
+int main(int ac, char **argv)
 {
-	char *line = NULL;
-	char **tokens = NULL;
-	int status = 0;
+	char *line = NULL, **tokens = NULL;
+	int status = 0, ind = 0;
+	(void) ac;
 
 	while (1)
 	{
@@ -26,6 +27,7 @@ int main(void)
 			status = 0;
 			continue;
 		}
+		ind++;
 		tokens = spilt_line(line);
 		if (tokens == NULL)
 		{
@@ -37,7 +39,7 @@ int main(void)
 			handle_built(tokens, &status, line);
 			continue;
 		}
-		status = exec(tokens, line);
+		status = exec(tokens, line, ind, argv);
 		free(tokens);
 		free(line);
 	}

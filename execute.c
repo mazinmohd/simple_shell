@@ -4,10 +4,12 @@
  * exec - executes the user command
  * @args: the array of the splited command
  * @line: the input of the user
+ * @name: shell name
+ * @ind: index
  * Return: the status of the operation
  */
 
-int exec(char **args, char *line)
+int exec(char **args, char *line, int ind, char **name)
 {
 	int status = 0;
 	char *path = NULL;
@@ -22,19 +24,19 @@ int exec(char **args, char *line)
 			command = get_full_path(args[0], path);
 			if (command == NULL)
 			{
-				perror(args[0]);
+				print_error(name[0], args[0], ind);
 				return (127);
 			}
 		}
 		else
 			command = args[0];
 
-		if (execve(command, args, environ) == -1)
+		if (execve(args[0], args, environ) == -1)
 		{
-			perror(args[0]);
+			/*perror(args[0]);*/
 			free(args);
 			free(line);
-			exit(127);
+			/*exit(127);*/
 		}
 	}
 	else

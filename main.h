@@ -18,7 +18,7 @@ char *read_line(void);
 
 char **spilt_line(char *new_line);
 
-int exec(char **args, char *line);
+int exec(char **args, char *line, int ind, char **name);
 
 size_t _getline(char **lineptr, size_t *m, FILE *stream);
 
@@ -66,7 +66,7 @@ void _puts(char *str);
 
 /* test */
 
-void printerror(char *name, char *command, int index);
+void print_error(char *name, char *command, int ind);
 
 char *_itoa(int n);
 
