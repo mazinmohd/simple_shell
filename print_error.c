@@ -21,9 +21,9 @@ void print_error(char *name, char *command, int ind)
 }
 
 /**
- * _itoa -
- * @n:
- * Return: buffer
+ * _itoa - change the int to char
+ * @n:the int number
+ * Return: the char
  */
 char *_itoa(int n)
 {
