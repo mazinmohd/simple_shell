@@ -1,5 +1,9 @@
 #include "main.h"
-
+/**
+ * _getenv - gets environment path
+ * @viron: the env variable
+ * Return: the path
+ */
 char *_getenv(char *viron)
 {
 	size_t len = _strlen(viron);
