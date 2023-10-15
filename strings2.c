@@ -24,9 +24,9 @@ char *_strchr(char *s, char c)
 }
 
 /**
-  * *_strdup - copy of the string
-  * @str: input
-  * Return: pointer
+ * *_strdup - copy of the string
+ * @str: input
+ * Return: pointer
  */
 
 char *_strdup(char *str)
@@ -48,4 +48,26 @@ char *_strdup(char *str)
 	for (i = 0; i < size; i++)
 		m[i] = str[i];
 	return (m);
+}
+
+/**
+ * _strncmp - compare two strings
+ * @str1: first string
+ * @str2: second string
+ * @num: size
+ * Return: comparsion
+ */
+int _strncmp(const char *str1, const char *str2, size_t num)
+{
+	size_t i;
+
+	for (i = 0; i < num; i++)
+	{
+		if (str1[i] == '\0' || str1[i] != str2[i])
+		{
+			return (str1[i] - str2[i]);
+		}
+	}
+
+	return 0;
 }

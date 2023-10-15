@@ -20,7 +20,7 @@ int exec(char **args, char *line, int ind, char **name)
 	{
 		if (_strchr(args[0], '/') == NULL)
 		{
-			path = getenv("PATH");
+			path = _getenv("PATH");
 			command = get_full_path(args[0], path);
 			if (command == NULL)
 			{

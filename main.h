@@ -36,6 +36,8 @@ int check_built(char *command);
 
 void handle_built(char **args, int *status, char *command);
 
+char *_getenv(char *viron);
+
 /*  strings  */
 
 int _strlen(char *str);
@@ -49,6 +51,8 @@ int _strcmp(char *s1, char *s2);
 char *_strchr(char *s, char c);
 
 char *_strdup(char *str);
+
+int _strncmp(const char *str1, const char *str2, size_t num);
 
 /* helper  */
 
