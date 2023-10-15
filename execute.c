@@ -31,12 +31,12 @@ int exec(char **args, char *line, int ind, char **name)
 		else
 			command = args[0];
 
-		if (execve(args[0], args, environ) == -1)
+		if (execve(command, args, environ) == -1)
 		{
 			/*perror(args[0]);*/
 			free(args);
 			free(line);
-			/*exit(127);*/
+			exit(127);
 		}
 	}
 	else
