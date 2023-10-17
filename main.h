@@ -34,7 +34,7 @@ char *get_full_path(char *command, char *path);
 
 int check_built(char *command);
 
-void handle_built(char **args, int *status, char *command);
+void handle_built(char **args, int status, char *command, int ind, char **argv);
 
 char *_getenv(char *viron);
 
@@ -62,6 +62,7 @@ int is_empty(const char *str);
 
 int _atoi_(char *str);
 
+void _free(char *f1, char **f2);
 /* write  */
 
 int _putchar(char c);

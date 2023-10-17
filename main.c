@@ -36,7 +36,7 @@ int main(int ac, char **argv)
 		}
 		if (check_built(line))
 		{
-			handle_built(tokens, &status, line);
+			handle_built(tokens, status, line, ind, argv);
 			continue;
 		}
 		status = exec(tokens, line, ind, argv);
