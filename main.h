@@ -24,7 +24,7 @@ size_t _getline(char **lineptr, size_t *m, FILE *stream);
 
 void comment(char *line);
 
-char *_strtok(char *string, const char *del);
+char *_strtok(char *str, char *del);
 
 char *handle_path(char *command, char *path);
 

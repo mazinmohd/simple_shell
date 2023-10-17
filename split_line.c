@@ -15,7 +15,7 @@ char **spilt_line(char *new_line)
 	args = malloc(sizeof(char *) * 25);
 	if (args == NULL)
 		return (NULL);
-	token = strtok(new_line, del);
+	token = _strtok(new_line, del);
 	if (!token)
 	{
 		free(new_line);
@@ -25,7 +25,7 @@ char **spilt_line(char *new_line)
 	{
 		args[len] = token;
 		len++;
-		token = strtok(NULL, del);
+		token = _strtok(NULL, del);
 	}
 	args[len] = NULL;
 	return (args);

@@ -10,7 +10,7 @@ char *get_full_path(char *command, char *path)
 	char *token;
 	char *full_path = NULL;
 
-	token = strtok(path, ":");
+	token = _strtok(path, ":");
 	while (token != NULL)
 	{
 		full_path = malloc(_strlen(token) + _strlen(command) + 1);
@@ -25,7 +25,7 @@ char *get_full_path(char *command, char *path)
 			return (full_path);
 
 		free(full_path);
-		token = strtok(NULL, ":");
+		token = _strtok(NULL, ":");
 	}
 
 	return (NULL);
