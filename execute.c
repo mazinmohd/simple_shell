@@ -16,10 +16,11 @@ int exec(char **args, char *line, int ind, char **name)
 	char *command;
 	pid_t id;
 
+	path = _getenv("PATH");
+	command = get_full_path(args[0], path);
+
 	if (_strchr(args[0], '/') == NULL)
 	{
-		path = _getenv("PATH");
-		command = get_full_path(args[0], path);
 		if (command == NULL)
 		{
 			print_error(name[0], args[0], ind);
