@@ -7,7 +7,7 @@
  */
 int main(int ac, char **argv)
 {
-	char *line = NULL, **tokens = NULL, **tokenizer;
+	char *line = NULL, **tokens = NULL, **tokenizer = NULL;
 	int status = 0, ind = 0, i;
 	(void) ac;
 
@@ -45,8 +45,8 @@ int main(int ac, char **argv)
 				continue;
 			}
 			status = exec(tokens, line, ind, argv);
+			free(tokens);
 		}
-		free(tokens);
 		free(tokenizer);
 		free(line);
 	}
