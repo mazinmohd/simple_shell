@@ -26,9 +26,10 @@ int check_built(char *command)
  * @command: the user input
  * @ind: the index of process
  * @argv: - the argument of main function
+ * @tokenizer: the array were sparated by ;
  */
-
-void handle_built(char **args, int status, char *command, int ind, char **argv, char **tokenizer)
+void handle_built(char **args, int status, char *command, int ind,
+		char **argv, char **tokenizer)
 {
 	int i = 0;
 	char *id = NULL;
@@ -38,11 +39,7 @@ void handle_built(char **args, int status, char *command, int ind, char **argv, 
 		if (args[1])
 			status = _atoi_(args[1]);
 		else
-		{
-			free(tokenizer);
-			_free(command, args);
-			exit(status);
-		}
+			free(tokenizer), _free(command, args), exit(status);
 		if (args[1][0] == '-')
 		{
 			id = _itoa(ind);
@@ -54,14 +51,9 @@ void handle_built(char **args, int status, char *command, int ind, char **argv, 
 			write(STDERR_FILENO, "Illegal number: ", 16);
 			write(STDERR_FILENO, args[1], _strlen(args[1]));
 			write(STDERR_FILENO, "\n", 1);
-			_free(command, args);
-			free(id);
-			exit(2);
-
+			_free(command, args), free(id), exit(2);
 		}
-		_free(command, args);
-		free(tokenizer);
-		free(id);
+		_free(command, args), free(tokenizer), free(id);
 		exit(status);
 	}
 	else if (_strcmp(args[0], "env") == 0)
@@ -72,7 +64,6 @@ void handle_built(char **args, int status, char *command, int ind, char **argv, 
 			write(STDOUT_FILENO, "\n", 1);
 		}
 		free(args);
-		/*_free(command, args);*/
 	}
 }
 /**
