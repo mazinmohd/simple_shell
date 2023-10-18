@@ -18,6 +18,8 @@ char *read_line(void)
 
 	if (chars == -1)
 	{
+		if (isatty(STDIN_FILENO))
+			write(1, "\n", 1);
 		free(new_line);
 		return (NULL);
 	}

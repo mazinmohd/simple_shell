@@ -15,16 +15,11 @@ int main(int ac, char **argv)
 	{
 		line = read_line();
 		if (line == NULL)
-		{
-			if (isatty(STDIN_FILENO))
-				write(1, "\n", 2);
 			return (status);
-		}
 		comment(line);
 		if (is_empty(line))
 		{
-			free(line);
-			status = 0;
+			free(line), status = 0;
 			continue;
 		}
 		ind++;
@@ -41,14 +36,13 @@ int main(int ac, char **argv)
 			}
 			if (check_built(line))
 			{
-				handle_built(tokens, status, line, ind, argv);
+				handle_built(tokens, status, line, ind, argv, tokenizer);
 				continue;
 			}
 			status = exec(tokens, line, ind, argv);
 			free(tokens);
 		}
-		free(tokenizer);
-		free(line);
+		free(tokenizer), free(line);
 	}
 	return (status);
 }

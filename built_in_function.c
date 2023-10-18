@@ -28,7 +28,7 @@ int check_built(char *command)
  * @argv: - the argument of main function
  */
 
-void handle_built(char **args, int status, char *command, int ind, char **argv)
+void handle_built(char **args, int status, char *command, int ind, char **argv, char **tokenizer)
 {
 	int i = 0;
 	char *id = NULL;
@@ -39,6 +39,7 @@ void handle_built(char **args, int status, char *command, int ind, char **argv)
 			status = _atoi_(args[1]);
 		else
 		{
+			free(tokenizer);
 			_free(command, args);
 			exit(status);
 		}
@@ -59,6 +60,8 @@ void handle_built(char **args, int status, char *command, int ind, char **argv)
 
 		}
 		_free(command, args);
+		free(tokenizer);
+		free(id);
 		exit(status);
 	}
 	else if (_strcmp(args[0], "env") == 0)
@@ -68,7 +71,8 @@ void handle_built(char **args, int status, char *command, int ind, char **argv)
 			write(STDOUT_FILENO, environ[i], _strlen(environ[i]));
 			write(STDOUT_FILENO, "\n", 1);
 		}
-		_free(command, args);
+		free(args);
+		/*_free(command, args);*/
 	}
 }
 /**

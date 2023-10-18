@@ -35,7 +35,7 @@ char *get_full_path(char *command, char *path);
 int check_built(char *command);
 
 void handle_built(char **args, int status,
-		char *command, int ind, char **argv);
+		char *command, int ind, char **argv, char **tokenizer);
 
 char *_getenv(char *viron);
 
