@@ -7,8 +7,8 @@
  */
 int main(int ac, char **argv)
 {
-	char *line = NULL, **tokens = NULL;
-	int status = 0, ind = 0;
+	char *line = NULL, **tokens = NULL, **tokenizer;
+	int status = 0, ind = 0, i;
 	(void) ac;
 
 	while (1)
@@ -28,19 +28,26 @@ int main(int ac, char **argv)
 			continue;
 		}
 		ind++;
-		tokens = spilt_line(line);
-		if (tokens == NULL)
-		{
-			free(tokens);
+		tokenizer = spilt_line(line, ";");
+		if (tokenizer == NULL)
 			continue;
-		}
-		if (check_built(line))
+		for (i = 0; tokenizer[i] != NULL; i++)
 		{
-			handle_built(tokens, status, line, ind, argv);
-			continue;
+			tokens = spilt_line(tokenizer[i], " \n\t");
+			if (tokens == NULL)
+			{
+				free(tokens);
+				continue;
+			}
+			if (check_built(line))
+			{
+				handle_built(tokens, status, line, ind, argv);
+				continue;
+			}
+			status = exec(tokens, line, ind, argv);
 		}
-		status = exec(tokens, line, ind, argv);
 		free(tokens);
+		free(tokenizer);
 		free(line);
 	}
 	return (status);

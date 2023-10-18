@@ -16,7 +16,7 @@ extern char **environ;
 
 char *read_line(void);
 
-char **spilt_line(char *new_line);
+char **spilt_line(char *new_line, char *del);
 
 int exec(char **args, char *line, int ind, char **name);
 
